@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Your Dashboard</title>
+    <style>
+        body { padding: 20px; font-family: Arial; }
+        .card { border: 1px solid #ddd; padding: 20px; margin: 10px; border-radius: 10px; }
+    </style>
 </head>
 <body>
     <h1>Welcome, {{ request.user.username }}!</h1>
