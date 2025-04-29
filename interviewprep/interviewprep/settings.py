@@ -14,7 +14,7 @@ from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path("C:\Users\aarya\OneDrive\Desktop\study\projects\interviewprep\interviewprep\settings.py").resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 # Quick-start development settings - unsuitable for production
@@ -128,13 +128,17 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core/static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'arrmkn09@gmail.com'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = '@aarya209'  # NOT your normal password!
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
