@@ -81,6 +81,46 @@
             z-index: -1;
         }
 
+        
+        .upload-container {
+            border: 2px dashed #74b9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0984e3;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .file-info {
+            background: rgba(116, 185, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+            width: 100%;
+            text-align: left;
+        }
+
+
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -210,7 +250,7 @@
             <form>
                 <input type="text" name="job-title" placeholder="Enter the job role" required>
                 <div class="upload-container" id="dropZone">
-                    <label class="upload-button" for="fileInput">Upload Resume</label>
+                    <span class="upload-text" for="fileInput">UPLOAD RESUME</span>
                     <input type="file" id="fileInput" accept=".pdf" required>
                     <div class="file-info" id="fileInfo"></div>
                 </div>
@@ -309,41 +349,3 @@
     </script>
 </body>
 </html>
-
-        .upload-container {
-            border: 2px dashed #74b9ff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-            text-align: left;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.05);
-            min-height: 100px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .upload-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #0984e3;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .file-info {
-            background: rgba(116, 185, 255, 0.1);
-            padding: 8px 16px;
-            border-radius: 6px;
-            margin-top: 10px;
-            display: none;
-            width: 100%;
-            text-align: left;
-        }
