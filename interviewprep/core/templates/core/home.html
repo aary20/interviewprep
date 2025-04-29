@@ -1,28 +1,175 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Interview Prep</title>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>AI Interview Companion</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; text-align: center; }
-        h1 { font-size: 3em; color: #333; margin-top: 50px; }
-        .container { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; }
-        a { background-color: #4CAF50; color: white; text-decoration: none; padding: 15px 30px; margin: 15px; border-radius: 8px; font-size: 1.2em; transition: background-color 0.3s; }
-        a:hover { background-color: #45a049; }
+        body {
+        font-family: 'Poppins', sans-serif;
+        background-image: url('https://images.unsplash.com/photo-1581091012181-f6a14e089fd9'); /* Interview Tech Background */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        }
+        body::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: -1;
+        }
+        .flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 300px;
+        perspective: 1000px;
+        }
+        .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        overflow: hidden;
+        }
+        .flip-card-front {
+        background-color: #f3f4f6;
+        color: black;
+        }
+        .flip-card-back {
+        background-color: #e0e7ff;
+        color: black;
+        transform: rotateY(180deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        }
     </style>
-</head>
-<body>
-    <div class = "container">
-        <h1>Welcome to AI Interview Preparation Platform</h1>
-        <a href="{% url 'login' %}">Login</a> | 
-        <a href="{% url 'register' %}">Register</a>
-        <a href="{% url 'upload_resume' %}">Upload Resume</a>
-        <a href="{% url 'mock_interview' %}">Start Mock Interview</a>
-        <a href="{% url 'reports' %}">View Reports</a>
-        <a href="{% url 'feedback' %}">Feedback</a>
-        <a href="{% url 'resources' %}">Resources</a>
+    </head>
+    <body class="text-white relative min-h-screen">
+    <!-- Navigation -->
+    <div class="bg-gray-800 text-gray-100 py-4 px-6">
+        <nav class="flex justify-center space-x-6">
+        <a href="#welcome" class="hover:text-indigo-300">Welcome</a>
+        <a href="#features" class="hover:text-indigo-300">Features</a>
+        <a href="#auth" class="hover:text-indigo-300">Login/Register</a>
+        <a href="#feedback" class="hover:text-indigo-300">Feedback</a>
+        <a href="#tips" class="hover:text-indigo-300">Tips</a>
+        <a href="#gallery" class="hover:text-indigo-300">Gallery</a>
+        </nav>
     </div>
+
+    <main class="px-6 pt-10">
+        <!-- Welcome Section -->
+        <section id="welcome" class="text-center mb-10">
+        <h1 class="text-5xl font-bold mb-4" style="font-family: 'Orbitron', sans-serif;">Welcome to Your AI Interview Companion</h1>
+        <p class="text-lg text-gray-200 max-w-2xl mx-auto">Upload your resume, practice interviews, and get AI-powered feedback — all in one platform!</p>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div class="bg-white text-gray-800 rounded-2xl shadow-xl p-6 hover:bg-indigo-100 transition-all duration-300 transform hover:scale-105">
+            <h3 class="text-xl font-semibold mb-2">📄 Upload Resume</h3>
+            <p>Analyze your resume and extract skills to customize your interview experience.</p>
+        </div>
+        <div class="bg-white text-gray-800 rounded-2xl shadow-xl p-6 hover:bg-indigo-100 transition-all duration-300 transform hover:scale-105">
+            <h3 class="text-xl font-semibold mb-2">🎤 Mock Interview</h3>
+            <p>Answer role-specific questions using text or voice. Practice like it’s real!</p>
+        </div>
+        <div class="bg-white text-gray-800 rounded-2xl shadow-xl p-6 hover:bg-indigo-100 transition-all duration-300 transform hover:scale-105">
+            <h3 class="text-xl font-semibold mb-2">📊 Reports</h3>
+            <p>Track your performance and identify improvement areas using visual reports.</p>
+        </div>
+        </section>
+
+        <!-- Login/Register Section -->
+        <section id="auth" class="text-center mb-10">
+        <h3 class="text-2xl font-bold mb-4">🔐 Choose an Option</h3>
+        <div class="flex justify-center gap-8">
+            <button class="bg-indigo-600 text-white py-2 px-6 rounded hover:bg-indigo-700 transition">Login</button>
+            <button class="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700 transition">Register</button>
+        </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="bg-white text-gray-900 rounded-xl p-8 shadow-lg mb-10 max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4 text-center">💬 Feedback</h3>
+        <textarea placeholder="Share your feedback..." rows="4" class="w-full p-3 border border-gray-300 rounded mb-4"></textarea>
+        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Submit Feedback</button>
+        </section>
+
+        <!-- Tips Section -->
+        <section id="tips" class="bg-white text-gray-900 rounded-xl p-8 shadow-lg mb-10 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold mb-4 text-center">🧠 Tips for a Successful Interview</h3>
+        <ul class="list-disc list-inside space-y-2">
+            <li>Research the company and role thoroughly.</li>
+            <li>Practice common interview questions and answers.</li>
+            <li>Dress appropriately and arrive on time.</li>
+            <li>Prepare questions to ask the interviewer.</li>
+            <li>Follow up with a thank-you email after the interview.</li>
+        </ul>
+        </section>
+
+        <!-- Gallery Flashcards Section -->
+        <section id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
+        <!-- Flashcard 1 -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1593575896687-e93f84eaa209" alt="Group Discussion" class="w-full h-full object-cover">
+            </div>
+            <div class="flip-card-back">
+                <p>Engage in group discussions to enhance communication skills and teamwork.</p>
+            </div>
+            </div>
+        </div>
+        <!-- Flashcard 2 -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1516240600001-6e2f5055c1e5" alt="Tech Collaboration" class="w-full h-full object-cover">
+            </div>
+            <div class="flip-card-back">
+                <p>Collaborate with peers to solve problems and simulate real interview panels.</p>
+            </div>
+            </div>
+        </div>
+        <!-- Flashcard 3 -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="https://images.unsplash.com/photo-1548748592-594b95b83a45" alt="Interview Practice" class="w-full h-full object-cover">
+            </div>
+            <div class="flip-card-back">
+                <p>Practice technical and HR rounds with detailed AI feedback and insights.</p>
+            </div>
+            </div>
+        </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-20 py-6 text-center text-gray-300">
+        &copy; 2025 AI InterviewPrep. All rights reserved.
+        </footer>
+    </main>
 </body>
 </html>
