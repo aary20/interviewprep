@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewPrep AI</title>
+
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to the CSS files -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/form.css' %}">
+    
+    <!-- External JavaScript Library (Chart.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Internal Styles -->
+    <style>
+        /* General body styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif; /* Poppins font for modern look */
+            background-image: url("{% static 'images/bg_base.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            color: #2c3e50; /* Dark Gray (for text) */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: rgba(241, 242, 246, 0.9); /* Very light gray */
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 50px;
+            margin: 0;
+            color: #2c3e50; /* Dark Gray for bold text */
+            font-weight: bold;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: rgba(241, 242, 246, 0.9); /* Very light gray */
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            color: #34495e; /* Medium Dark Gray */
+        }
+
+        /* Content block */
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Button Styling for interactivity */
+        .btn {
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #3498db; /* Bright Blue */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+        /* Form and inputs */
+        .form-container {
+            background-color: rgba(241, 242, 246, 0.8); /* Very light gray background */
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #3498db; /* Bright Blue border */
+            border-radius: 8px;
+            background-color: #ffffff; /* White background */
+            color: #2c3e50; /* Dark Gray text */
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2980b9; /* Darker Blue on focus */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>InterviewPrep AI</h1>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        <!-- Example of a form section -->
+        <div class="form-container">
+            <h2>Prepare for your Interview</h2>
+            <form>
+                <input type="text" name="job-title" placeholder="Enter the job role" required>
+                <textarea name="resume" placeholder="Paste your resume here" rows="6" required></textarea>
+                <button type="submit" class="btn">Get Interview Questions</button>
+            </form>
+        </div>
+        {% endblock %}
+    </div>
+
+    <footer>
+        &copy; 2025 Aarya Patel
+    </footer>
+
+    <!-- Example JavaScript for interactivity -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demo
+            alert('Interview questions will be generated for the provided job role and resume.');
+        });
+    </script>
+</body>
+</html>
