@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Reports - Interview Prep</title>
     <style>
-        body { font-family: sans-serif; padding: 40px; }
-        canvas { max-width: 600px; margin-top: 30px; }
+        body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 50px; }
+        h2 { font-size: 2.5em; color: #333; text-align: center; }
+        .chart-container { text-align: center; }
+        canvas { max-width: 600px; }
     </style>
 </head>
 <body>
@@ -35,9 +37,10 @@
 
     <br>
     <a href="{% url 'dashboard' %}">Back to Dashboard</a>
-
-    <canvas id="reportChart"></canvas>
-
+    <div class="chart_container">
+        <canvas id="reportChart"></canvas>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('reportChart').getContext('2d');
