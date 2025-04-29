@@ -14,7 +14,6 @@ urlpatterns = [
     path('mock-interview/', views.mock_interview, name='mock_interview'),
     path('thank-you/', views.thank_you, name='thank_you'),
     path('analyze_answer/', views.analyze_answer, name='analyze_answer'),
-    path('dashboard/', views.dashboard, name='dashboard'),
     path('report/<int:id>/', views.view_report, name='view_report'),
 
 ]
