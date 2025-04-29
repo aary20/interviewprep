@@ -14,7 +14,7 @@ from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path("C:\Users\aarya\OneDrive\Desktop\study\projects\interviewprep\interviewprep\settings.py").resolve().parent.parent
 
 load_dotenv()
 # Quick-start development settings - unsuitable for production
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django_celery_beat',
     "core",
 ]
 
@@ -117,7 +118,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'login'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -127,13 +129,22 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core/static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'arrmkn09@gmail.com'
+EMAIL_HOST_PASSWORD = '@aarya209'  # NOT your normal password!
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Send emails to the console (for now)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
