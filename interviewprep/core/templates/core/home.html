@@ -3,20 +3,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Interview Prep</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        a { display: block; margin: 10px; font-size: 20px; }
+        body { font-family: Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; text-align: center; }
+        h1 { font-size: 3em; color: #333; margin-top: 50px; }
+        .container { display: flex; justify-content: center; align-items: center; flex-direction: column; height: 100vh; }
+        a { background-color: #4CAF50; color: white; text-decoration: none; padding: 15px 30px; margin: 15px; border-radius: 8px; font-size: 1.2em; transition: background-color 0.3s; }
+        a:hover { background-color: #45a049; }
     </style>
 </head>
 <body>
-    <h1>Welcome to AI Interview Preparation Platform</h1>
-    <a href="{% url 'login' %}">Login</a> | 
-    <a href="{% url 'register' %}">Register</a>
-    <a href="{% url 'upload_resume' %}">Upload Resume</a>
-    <a href="{% url 'mock_interview' %}">Start Mock Interview</a>
-    <a href="{% url 'reports' %}">View Reports</a>
-    <a href="{% url 'feedback' %}">Feedback</a>
-    <a href="{% url 'resources' %}">Resources</a>
+    <div class = "container">
+        <h1>Welcome to AI Interview Preparation Platform</h1>
+        <a href="{% url 'login' %}">Login</a> | 
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'upload_resume' %}">Upload Resume</a>
+        <a href="{% url 'mock_interview' %}">Start Mock Interview</a>
+        <a href="{% url 'reports' %}">View Reports</a>
+        <a href="{% url 'feedback' %}">Feedback</a>
+        <a href="{% url 'resources' %}">Resources</a>
+    </div>
 </body>
 </html>
