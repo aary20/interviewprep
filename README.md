@@ -141,6 +141,7 @@ Visit `http://127.0.0.1:8000` to access the app!
 **7. Weekly Reports**
 - Get weekly email reports summarizing progress and areas for improvement.
 
+##📸 Screenshots
 
 ## 📨 Email Notifications
 
