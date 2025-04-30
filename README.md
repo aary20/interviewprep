@@ -141,7 +141,8 @@ Visit `http://127.0.0.1:8000` to access the app!
 **7. Weekly Reports**
 - Get weekly email reports summarizing progress and areas for improvement.
 
-![Screenshot 2025-04-30 101816](https://github.com/user-attachments/assets/c0a3808d-8280-45c7-8ccb-9c15be90d075)
+![Screenshot 2025-04-30 101816](https://github.com/user-attachments/assets/c0a3808d-8280-45c7-8ccb-9c15be90d075 = 250*250)
+![Screenshot 2025-04-30 101833](https://github.com/user-attachments/assets/f4f888f9-efc5-481a-bac7-5d71ac13fa5e)
 
 ## 📨 Email Notifications
 
