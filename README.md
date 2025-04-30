@@ -1,4 +1,4 @@
-![Screenshot 2025-04-30 101816](https://github.com/user-attachments/assets/7f92c1cd-08ea-4874-b130-359a1521bdbf)# AI-Based Interview Preparation Platform
+# AI-Based Interview Preparation Platform
 
 A web application to help users prepare for job interviews by generating interview questions based on their resumes or selected job roles, analyzing their answers (text or voice), and providing AI-based feedback along with performance reports. This platform aims to simulate real-time interview environments, giving users valuable insights and helping them improve over time.
 
@@ -140,9 +140,6 @@ Visit `http://127.0.0.1:8000` to access the app!
 
 **7. Weekly Reports**
 - Get weekly email reports summarizing progress and areas for improvement.
-
-![Screenshot 2025-04-30 101816](https://github.com/user-attachments/assets/c0a3808d-8280-45c7-8ccb-9c15be90d075 | width = 100)
-![Screenshot 2025-04-30 101833](https://github.com/user-attachments/assets/f4f888f9-efc5-481a-bac7-5d71ac13fa5e)
 
 ## 📨 Email Notifications
 
