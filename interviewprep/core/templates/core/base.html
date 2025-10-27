@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewPrep AI</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Background Image and Global Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: url("https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg") no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            animation: fadeIn 1.5s ease-in;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 40px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 65px;
+            color: transparent;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #74b9ff 100%);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-transform: uppercase;
+            font-family: 'Comic Relief', cursive;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+            margin: 0;
+            padding: 0;
+            animation: gradient 6s ease infinite;
+            position: relative;
+        }
+
+        header h1::after {
+            content: 'InterviewPrep AI';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            filter: blur(8px);
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            z-index: -1;
+        }
+
+        
+        .upload-container {
+            border: 2px dashed #74b9ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .upload-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0984e3;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .file-info {
+            background: rgba(116, 185, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-top: 10px;
+            display: none;
+            width: 100%;
+            text-align: left;
+        }
+
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Slide Up Animation for Form */
+        @keyframes slideUp {
+            0% { transform: translateY(40px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 40px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 55px;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 15px 0;
+            color: #ffffff;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            animation: slideUp 1s ease-out;
+            margin: 20px auto;
+        }
+
+        .form-container h2 {
+            margin-bottom: 30px;
+            color: #74b9ff;
+            font-size: 28px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, textarea {
+            width: calc(100% - 32px);
+            padding: 16px;
+            margin-bottom: 25px;
+            border: 2px solid #74b9ff;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus, textarea:focus {
+            border-color: #0984e3;
+            box-shadow: 0 0 15px rgba(9,132,227,0.3);
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            background-color: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #74b9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(9,132,227,0.4);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>InterviewPrep AI</h1>
+    </header>
+
+    <div class="content">
+        <div class="form-container">
+            <h2>Prepare for your Interview</h2>
+            <form>
+                <input type="text" name="job-title" placeholder="Enter the job role" required>
+                <div class="upload-container" id="dropZone">
+                    <span class="upload-text" for="fileInput">UPLOAD RESUME</span>
+                    <input type="file" id="fileInput" accept=".pdf" required>
+                    <div class="file-info" id="fileInfo"></div>
+                </div>
+                <textarea name="resume" placeholder="Or paste your resume text here" rows="6"></textarea>
+                <button type="submit" class="btn">Get Interview Questions</button>
+            </form>
+
+            <script>
+                const dropZone = document.getElementById('dropZone');
+                const fileInput = document.getElementById('fileInput');
+                const resumeTextarea = document.querySelector('textarea[name="resume"]');
+
+                // Prevent default drag behaviors
+                ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, preventDefaults, false);
+                    document.body.addEventListener(eventName, preventDefaults, false);
+                });
+
+                function preventDefaults (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                // Highlight drop zone when item is dragged over it
+                ['dragenter', 'dragover'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, highlight, false);
+                });
+
+                ['dragleave', 'drop'].forEach(eventName => {
+                    dropZone.addEventListener(eventName, unhighlight, false);
+                });
+
+                function highlight(e) {
+                    dropZone.classList.add('dragover');
+                }
+
+                function unhighlight(e) {
+                    dropZone.classList.remove('dragover');
+                }
+
+                // Handle dropped files
+                dropZone.addEventListener('drop', handleDrop, false);
+
+                function handleDrop(e) {
+                    const dt = e.dataTransfer;
+                    const files = dt.files;
+                    handleFiles(files);
+                }
+
+                function handleFiles(files) {
+                    const file = files[0];
+                    const fileInfo = document.getElementById('fileInfo');
+                    if (file && file.type === 'application/pdf') {
+                        fileInput.files = files;
+                        fileInfo.textContent = file.name;
+                        fileInfo.style.display = 'block';
+                        resumeTextarea.value = ''; // Clear textarea when PDF is uploaded
+                    } else {
+                        alert('Please upload a PDF file only');
+                        fileInfo.style.display = 'none';
+                    }
+                }
+
+                // Handle manual file selection
+                fileInput.addEventListener('change', function(e) {
+                    handleFiles(this.files);
+                });
+
+                // Form submission
+                document.querySelector('form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    const jobTitle = this.querySelector('input[name="job-title"]').value;
+                    const resumeText = resumeTextarea.value;
+                    const pdfFile = fileInput.files[0];
+
+                    if (!resumeText && !pdfFile) {
+                        alert('Please either upload a PDF or paste your resume text');
+                        return;
+                    }
+
+                    alert('Interview questions will be generated for the provided job role and resume.');
+                });
+            </script>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Aarya Patel
+    </footer>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Interview questions will be generated for the provided job role and resume.');
+        });
+    </script>
+</body>
+</html>

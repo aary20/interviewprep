@@ -1,0 +1,19 @@
+psycopg2-binary        
+requests
+pillow
+whitenoise
+>>>>>>> 70224424e046a63559af90d1436d85d15c5f3cf2
+=======
+Django>=4.2,<5.1
+gunicorn
+psycopg2-binary        # if you're using PostgreSQL
+requests
+pillow
+whitenoise
+google-cloud-speech
+=======
+psycopg2-binary        
+requests
+pillow
+whitenoise
+>>>>>>> 70224424e046a63559af90d1436d85d15c5f3cf2

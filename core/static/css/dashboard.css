@@ -1,0 +1,24 @@
+/* static/core/css/dashboard.css */
+.dashboard-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 20px 0;
+    }
+    
+    .stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    }
+    
+    .stat-box {
+    flex: 1;
+    background-color: #f0f8ff;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    }
+    

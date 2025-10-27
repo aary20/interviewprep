@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer Feedback</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative;
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 2rem;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
+            z-index: -1;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        p {
+            margin: 1rem 0;
+            line-height: 1.6;
+        }
+        strong {
+            color: #60a5fa;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        li {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        a {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        a:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+        }
+        .score-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .final-score {
+            font-size: 1.25rem;
+            color: #60a5fa;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Answer Feedback</h1>
+
+        <div class="score-container">
+            <p><strong>Your Answer:</strong> <span id="answer"></span></p>
+        </div>
+
+        <h3>Grammar Analysis</h3>
+        <p>Total Grammar Errors: <span id="grammarErrors"></span></p>
+        <ul id="grammarList"></ul>
+
+        <h3>Keyword Analysis</h3>
+        <div class="score-container">
+            <p><strong>Found Keywords:</strong> <span id="foundKeywords"></span></p>
+            <p><strong>Missing Keywords:</strong> <span id="missingKeywords"></span></p>
+        </div>
+
+        <h3>Scores</h3>
+        <div class="score-container">
+            <p><strong>Grammar Score:</strong> <span id="grammarScore"></span>/100</p>
+            <p><strong>Keyword Coverage Score:</strong> <span id="keywordScore"></span>/100</p>
+            <div class="final-score">
+                <p><strong>Final Answer Score:</strong> <span id="finalScore"></span>/100</p>
+                <p id="scoreComment" class="mt-4" style="color: #60a5fa; font-style: italic;"></p>
+            </div>
+        </div>
+
+        <a href="mock_interview.html">Go Back to Mock Interview</a>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                answer: params.get('answer') || '',
+                grammarErrors: params.get('grammar_errors') || '0',
+                grammarMatches: JSON.parse(params.get('grammar_matches') || '[]'),
+                foundKeywords: params.get('found_keywords') || '',
+                missingKeywords: params.get('missing_keywords') || '',
+                grammarScore: params.get('grammar_score') || '0',
+                keywordScore: params.get('keyword_score') || '0',
+                finalScore: params.get('final_score') || '0'
+            };
+        }
+
+        // Function to populate feedback data
+        function getScoreComment(score) {
+            const numScore = parseInt(score);
+            if (numScore >= 80) {
+                return "Excellent work! Your answer demonstrates strong understanding and great attention to detail.";
+            } else if (numScore >= 70) {
+                return "Good job! Your answer shows solid understanding with some room for improvement.";
+            } else if (numScore >= 50) {
+                return "Fair attempt. Focus on improving grammar and including more relevant keywords.";
+            } else {
+                return "Keep practicing! Review the feedback and try to incorporate more keywords and improve grammar.";
+            }
+        }
+
+        function populateFeedback() {
+            const data = getUrlParams();
+            
+            document.getElementById('answer').textContent = data.answer;
+            document.getElementById('grammarErrors').textContent = data.grammarErrors;
+            document.getElementById('foundKeywords').textContent = data.foundKeywords;
+            document.getElementById('missingKeywords').textContent = data.missingKeywords;
+            document.getElementById('grammarScore').textContent = data.grammarScore;
+            document.getElementById('keywordScore').textContent = data.keywordScore;
+            document.getElementById('finalScore').textContent = data.finalScore;
+            document.getElementById('scoreComment').textContent = getScoreComment(data.finalScore);
+
+            const grammarList = document.getElementById('grammarList');
+            data.grammarMatches.forEach(match => {
+                const li = document.createElement('li');
+                li.textContent = `${match.message} (${match.context})`;
+                grammarList.appendChild(li);
+            });
+        }
+
+        // Populate feedback when page loads
+        window.onload = populateFeedback;
+    </script>
+</body>
+</html>

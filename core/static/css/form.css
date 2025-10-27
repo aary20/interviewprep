@@ -1,0 +1,35 @@
+/* static/core/css/form.css */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    }
+    
+    input[type="text"],
+    input[type="password"],
+    input[type="file"],
+    select {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    }
+    
+    button {
+    background-color: #2e86de;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    }
+    
+    button:hover {
+    background-color: #1b4f72;
+    }
+    
