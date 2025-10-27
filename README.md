@@ -142,8 +142,8 @@ Visit `http://127.0.0.1:8000` to access the app!
 
 ## 📸 Screenshots
 
-![Screenshot 2025-04-30 101816](https://github.com/user-attachments/assets/7f92c1cd-08ea-4874-b130-359a1521bdbf)
-![Screenshot 2025-04-30 101833](https://github.com/user-attachments/assets/f4f888f9-efc5-481a-bac7-5d71ac13fa5e)
+![Screenshot 2025-04-30 101816](https://github.com/aary20/interviewprep/blob/main/Screenshot%202025-04-30%20101816.png)
+![Screenshot 2025-04-30 101833](https://github.com/aary20/interviewprep/blob/main/Screenshot%202025-04-30%20101833.png)
 
 ## 📨 Email Notifications
 
